@@ -44,3 +44,7 @@ Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 //user
 Route::resource('/pengaduanku', UserPerngaduanController::class);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
+
+
+//authentification admin
+Route::post('/authadmin', [LoginAdminController::class, 'authadmin']);
