@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MasyarakatController extends Controller
@@ -17,7 +18,8 @@ class MasyarakatController extends Controller
             'tittle'    => 'APM | Masyarakat',
             'header'    =>  'Masyarakat',
             'breadcrumb1' =>  'Masyarakat',
-            'breadcrumb2' =>  'Index'
+            'breadcrumb2' =>  'Index',
+            'dataMasyarakat'    => User::where('role', 'Masyarakat')->get()
         ]);
     }
 
@@ -32,7 +34,8 @@ class MasyarakatController extends Controller
             'tittle'    => 'APM | Masyarakat',
             'header'    =>  'Masyarakat',
             'breadcrumb1' =>  'Masyarakat',
-            'breadcrumb2' =>  'Create'
+            'breadcrumb2' =>  'Create',
+
         ]);
     }
 
@@ -44,7 +47,28 @@ class MasyarakatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'textNik'   =>  'required|unique:users,nik',
+            'textNama'  =>  'required',
+            'selectJenisKelamin' =>  'required',
+            'textNoTelepon' =>  'required',
+            'textAlamat'    =>  'required',
+            'textEmail' =>  'required|unique:users,email',
+            'textPassword'  =>  'required'
+        ]);
+        $dataSimpanMasyarakat = [
+            'nik'   =>  $request->textNik,
+            'name'  =>  $request->textNama,
+            'jenis_kelamin' =>  $request->selectJenisKelamin,
+            'notelepon' =>  $request->textNoTelepon,
+            'alamat'    =>  $request->textAlamat,
+            'email' =>  $request->textEmail,
+            'password'  =>  bcrypt($request->textPassword),
+            'role'  =>  'Masyarakat'
+        ];
+        // ddd($dataSimpanMasyarakat);
+        User::create($dataSimpanMasyarakat);
+        return redirect('/masyarakat');
     }
 
     /**
