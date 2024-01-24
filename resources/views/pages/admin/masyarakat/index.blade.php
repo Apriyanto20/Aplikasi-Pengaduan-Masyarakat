@@ -30,7 +30,7 @@
                                 <td>{{ $masyarakat->alamat }}</td>
                                 <td>
                                     <a href="/masyarakat/{{ $masyarakat->id }}/edit" class="btn btn-warning btn-xs" title="Edit Masyarakat"><li class="fa fa-edit"></li></a>
-                                    <a href="" class="btn btn-primary btn-xs" title="Detail Masyarakat"><li class="fa fa-list"></li></a>
+                                    <a href="/masyarakat/{{ $masyarakat->id }}" class="btn btn-primary btn-xs" title="Detail Masyarakat"><li class="fa fa-list"></li></a>
                                 </td>
                             </tr>
                             @endforeach

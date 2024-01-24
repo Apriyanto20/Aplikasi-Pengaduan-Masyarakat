@@ -1,24 +1,5 @@
 @extends('layouts.layoutsadmin')
 @section('content')
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1>Pegawai</h1>
-                            </div>
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Pegawai</a></li>
-                                    <li class="breadcrumb-item active">Add Data Pegawai</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div><!-- /.container-fluid -->
-                </section>
-
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
@@ -32,6 +13,8 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
+                                    <form action="/pegawai" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form form-group">
@@ -55,7 +38,7 @@
                                             </div>
                                             <div class="form form-group">
                                                 <label for="textNoTelepon">No Telepon</label>
-                                                <input type="text" class="form form-control" id="textNoTelepon" placeholder="Contoh : +6282222777">
+                                                <input type="text" name="textNoTelepon" class="form form-control" id="textNoTelepon" placeholder="Contoh : +6282222777">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
@@ -84,9 +67,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12">
-                                            <a href="pegawai.html" class="btn btn-success btn-md float-right"><li class="fa fa-save"></li> Simpan</a href="/masyarakat.html">
+                                            <button type="submit" class="btn btn-success btn-md float-right"><li class="fa fa-save"></li> Simpan</button>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -97,5 +81,4 @@
                     <!-- /.row -->
                 </section>
                 <!-- /.content -->
-            </div>
 @endsection

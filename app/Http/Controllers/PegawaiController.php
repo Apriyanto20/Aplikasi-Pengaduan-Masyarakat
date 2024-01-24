@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -17,7 +18,8 @@ class PegawaiController extends Controller
             'tittle'    => 'APM | Pegawai',
             'header'    =>  'Pegawai',
             'breadcrumb1' =>  'Pegawai',
-            'breadcrumb2' =>  'Index'
+            'breadcrumb2' =>  'Index',
+            'dataPegawai'  =>  User::where('role', 'Petugas')->get()
         ]);
     }
 
@@ -44,7 +46,29 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'textNik'   =>  'required|unique:users,nik',
+            'textNama'  =>  'required',
+            'selectJenisKelamin' =>  'required',
+            'textNoTelepon' =>  'required',
+            'textAlamat'    =>  'required',
+            'textEmail' =>  'required|unique:users,email',
+            'textPassword'  =>  'required',
+            'selectJabatan' =>  'required'
+        ]);
+        $dataSimpanPegawai = [
+            'nik'   =>  $request->textNik,
+            'name'  =>  $request->textNama,
+            'jenis_kelamin' =>  $request->selectJenisKelamin,
+            'notelepon' =>  $request->textNoTelepon,
+            'alamat'    =>  $request->textAlamat,
+            'email' =>  $request->textEmail,
+            'password'  =>  bcrypt($request->textPassword),
+            'role'  =>  'Admin', 'Petugas'
+        ];
+        // ddd($dataSimpanPegawai);
+        User::create($dataSimpanPegawai);
+        return redirect('/pegawai');
     }
 
     /**
@@ -70,7 +94,8 @@ class PegawaiController extends Controller
             'tittle'    => 'APM | Pegawai',
             'header'    =>  'Pegawai',
             'breadcrumb1' =>  'Pegawai',
-            'breadcrumb2' =>  'Edit'
+            'breadcrumb2' =>  'Edit',
+            'dataPegawai'  =>  User::where('id', $id)->first()
         ]);
     }
 
@@ -83,7 +108,29 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'textNik'   =>  'required|unique:users,nik',
+            'textNama'  =>  'required',
+            'selectJenisKelamin' =>  'required',
+            'textNoTelepon' =>  'required',
+            'textAlamat'    =>  'required',
+            'textEmail' =>  'required|unique:users,email',
+            'textPassword'  =>  'required',
+            'selectJabatan' =>  'required'
+        ]);
+        $dataSimpanPegawai = [
+            'nik'   =>  $request->textNik,
+            'name'  =>  $request->textNama,
+            'jenis_kelamin' =>  $request->selectJenisKelamin,
+            'notelepon' =>  $request->textNoTelepon,
+            'alamat'    =>  $request->textAlamat,
+            'email' =>  $request->textEmail,
+            'password'  =>  bcrypt($request->textPassword),
+            'role'  =>  'Admin', 'Petugas'
+        ];
+        // ddd($dataSimpanPegawai);
+        User::where('id', $id)->update($dataSimpanPegawai);
+        return redirect('/pegawai');
     }
 
     /**

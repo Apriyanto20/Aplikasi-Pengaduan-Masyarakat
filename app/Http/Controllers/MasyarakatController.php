@@ -79,7 +79,13 @@ class MasyarakatController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.admin.masyarakat.detail', [
+            'detailmasyarakat'    => User::where('id', $id)->first(),
+            'tittle'    => 'APM | Masyarakat',
+            'header'    =>  'Masyarakat',
+            'breadcrumb1' =>  'Masyarakat',
+            'breadcrumb2' =>  'Detail',
+        ]);
     }
 
     /**
@@ -94,7 +100,8 @@ class MasyarakatController extends Controller
             'tittle'    => 'APM | Masyarakat',
             'header'    =>  'Masyarakat',
             'breadcrumb1' =>  'Masyarakat',
-            'breadcrumb2' =>  'Edit'
+            'breadcrumb2' =>  'Edit',
+            'dataMasyarakat'    => User::where('id', $id)->first()
         ]);
     }
 
@@ -107,7 +114,27 @@ class MasyarakatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'textNik'   =>  'required',
+            'textNama'  =>  'required',
+            'selectJenisKelamin' =>  'required',
+            'textNoTelepon' =>  'required',
+            'textAlamat'    =>  'required',
+            'textEmail' =>  'required',
+            'textPassword'  =>  'required'
+        ]);
+        $dataSimpanMasyarakat = [
+            'nik'   =>  $request->textNik,
+            'name'  =>  $request->textNama,
+            'jenis_kelamin' =>  $request->selectJenisKelamin,
+            'notelepon' =>  $request->textNoTelepon,
+            'alamat'    =>  $request->textAlamat,
+            'email' =>  $request->textEmail,
+            'password'  =>  bcrypt($request->textPassword),
+            'role'  =>  'Masyarakat'
+        ];
+        User::where('id', $id)->update($dataSimpanMasyarakat);
+        return redirect('/masyarakat');
     }
 
     /**

@@ -1,6 +1,5 @@
 @extends('layouts.layoutsadmin')
 @section('content')
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -26,42 +25,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($dataPegawai as $pegawai)
                                 <tr>
-                                    <td>1</td>
-                                    <td>3207172222000000</td>
-                                    <td>Lukman</td>
-                                    <td>Admin</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $pegawai->nik }}</td>
+                                    <td>{{ $pegawai->name }}</td>
+                                    <td>{{ $pegawai->role }}</td>
                                     <td>
-                                        <a href="/pegawai/1/edit" class="btn btn-warning btn-xs"
+                                        <a href="/pegawai/{{ $pegawai->id }}/edit" class="btn btn-warning btn-xs"
                                             title="Edit Masyarakat">
                                             <li class="fa fa-edit"></li>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>3207172222000000</td>
-                                    <td>Fery</td>
-                                    <td>Petugas</td>
-                                    <td>
-                                        <a href="pegawai-detail.html" class="btn btn-warning btn-xs"
-                                            title="Edit Masyarakat">
-                                            <li class="fa fa-edit"></li>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>3207172222000000</td>
-                                    <td>Samsu</td>
-                                    <td>Admin</td>
-                                    <td>
-                                        <a href="pegawai-detail.html" class="btn btn-warning btn-xs"
-                                            title="Edit Masyarakat">
-                                            <li class="fa fa-edit"></li>
-                                        </a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

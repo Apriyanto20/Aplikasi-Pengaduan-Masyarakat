@@ -1,23 +1,5 @@
 @extends('layouts.layoutsadmin')
 @section('content')
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Pegawai</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Pegawai</a></li>
-                        <li class="breadcrumb-item active">Detail Data Pegawai</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -51,6 +33,9 @@
                                         </ul>
                                     </div>
                                     <div class="card-body">
+                                        <form action="/pegawai/{{ $dataPegawai->id }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
                                         <div class="tab-content" id="custom-tabs-three-tabContent">
                                             <div class="tab-pane fade show active" id="custom-tabs-three-home"
                                                 role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
@@ -59,34 +44,34 @@
                                                         <label for="textNik">NIK</label>
                                                         <input type="text" name="textNik" id="textNik"
                                                             class="form form-control"
-                                                            placeholder="Contoh : 320717XXXXXXX">
+                                                            placeholder="Contoh : 320717XXXXXXX" value="{{ $dataPegawai->nik }}">
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="textNama">Nama</label>
                                                         <input type="text" name="textNama" id="textNama"
                                                             class="form form-control"
-                                                            placeholder="Nama Lengkap">
+                                                            placeholder="Nama Lengkap" value="{{ $dataPegawai->name }}">
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="selectJenisKelamin">Jenis Kelamin</label>
                                                         <select name="selectJenisKelamin"
                                                             id="selectJenisKelamin" class="form form-control">
                                                             <option value="">-- Pilih Jenis Kelamin --</option>
-                                                            <option value="Laki-laki">Laki-laki</option>
-                                                            <option value="Perempuan">Perempuan</option>
+                                                            <option value="Laki-laki" {{ $dataPegawai->jenis_kelamin == 'Laki-laki' ? 'selected':'' }}>Laki-laki</option>
+                                                            <option value="Perempuan" {{ $dataPegawai->jenis_kelamin == 'Perempuan' ? 'selected':'' }}>Perempuan</option>
                                                         </select>
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="textNoTelepon">No Telepon</label>
                                                         <input type="text" class="form form-control"
-                                                            id="textNoTelepon" placeholder="contoh : +627788788787">
+                                                            id="textNoTelepon" placeholder="contoh : +627788788787" value="{{ $dataPegawai->notelepon }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="form form-group">
                                                         <label for="textAlamat">Alamat</label>
                                                         <textarea name="textAlamat" id="textAlamat" cols="30"
-                                                            rows="1" class="form form-control" placeholder="Alamat Lengkap"></textarea>
+                                                            rows="1" class="form form-control" placeholder="Alamat Lengkap">{{ $dataPegawai->alamat }}</textarea>
                                                     </div>
 
                                                     <div class="form form-group">
@@ -94,21 +79,21 @@
                                                         <select name="selectJabatan" id="selectJabatan"
                                                             class="form form-control">
                                                             <option value="">-- Pilih Jabatan --</option>
-                                                            <option value="Admin">Admin</option>
-                                                            <option value="Petugas">Petugas</option>
+                                                            <option value="Admin" {{ $dataPegawai->role == 'Admin' ? 'selected':'' }}>Admin</option>
+                                                            <option value="Petugas" {{ $dataPegawai->role == 'Petugas' ? 'selected':'' }}>Petugas</option>
                                                         </select>
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="textEmail">Email</label>
                                                         <input type="email" name="textEmail"
-                                                            class="form form-control" id="textEmail" placeholder="contoh : apm@gmail.com">
+                                                            class="form form-control" id="textEmail" placeholder="contoh : apm@gmail.com" value="{{ $dataPegawai->email }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-sm-12">
-                                                    <a href="pegawai.html"
+                                                    <button type="submit"
                                                         class="btn btn-success btn-md">
                                                         <li class="fa fa-save"></li> Simpan
-                                                    </a href="/masyarakat.html">
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-three-profile"
@@ -131,6 +116,7 @@
 
                                             </div>
                                         </div>
+                                        </form>
                                     </div>
                                     <!-- /.card -->
                                 </div>
@@ -146,5 +132,4 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-</div>
 @endsection
