@@ -34,6 +34,12 @@
                                             title="Edit Masyarakat">
                                             <li class="fa fa-edit"></li>
                                         </a>
+                                        <form action="/kategori/{{ $kategori->id }}" method="POST" class="btn btn-danger btn-xs">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash" onclick="return confirm
+                                            ('Apakah anda yakin akan menghapus data tersebut ?')"></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
