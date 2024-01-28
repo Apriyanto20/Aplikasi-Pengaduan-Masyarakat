@@ -57,14 +57,14 @@
                                                 <input type="password" name="textPassword" class="form form-control"
                                                     id="textPassword">
                                             </div>
-                                            <div class="form form-group">
+                                            {{-- <div class="form form-group">
                                                 <label for="selectJabatan">Jabatan</label>
                                                 <select name="selectJabatan" id="selectJabatan" class="form form-control">
                                                     <option value="">-- Pilih Jabatan --</option>
                                                     <option value="Admin">Admin</option>
                                                     <option value="Petugas">Petugas</option>
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="col-md-12 col-sm-12">
                                             <button type="submit" class="btn btn-success btn-md float-right"><li class="fa fa-save"></li> Simpan</button>

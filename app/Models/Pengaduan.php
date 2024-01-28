@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengaduan extends Model
 {
     use HasFactory;
-    protected $illabel = ['masyarakat_id', 'kategori_id', 'tanggalpengaduan', 'isipengaduan'. 'foto', 'status'];
+    protected $fillable = ['masyarakat_id', 'kategori_id', 'tanggalpengaduan', 'isipengaduan'. 'foto', 'status'];
     protected $table = 'pengaduan';
 
     //relasi balik ke kategori

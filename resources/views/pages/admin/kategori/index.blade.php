@@ -24,10 +24,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($dataKategori as $kategori)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Kekerasan</td>
-                                    <td>Deskripsi tentang jenis pengaduan kekerasan</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kategori->namacategory }}</td>
+                                    <td>{{ $kategori->deskripsi }}</td>
                                     <td>
                                         <a href="/kategori/1/edit" class="btn btn-warning btn-xs"
                                             title="Edit Masyarakat">
@@ -35,18 +36,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Pencemaran</td>
-                                    <td>Deskripsi tentang jenis pengaduan Pencemaran Lingkungan</td>
-                                    <td>
-                                        <a href="kategori-add.html" class="btn btn-warning btn-xs"
-                                            title="Edit Masyarakat">
-                                            <li class="fa fa-edit"></li>
-                                        </a>
-                                    </td>
-                                </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

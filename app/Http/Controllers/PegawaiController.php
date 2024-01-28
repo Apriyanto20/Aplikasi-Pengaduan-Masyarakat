@@ -47,14 +47,14 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'textNik'   =>  'required|unique:users,nik',
-            'textNama'  =>  'required',
-            'selectJenisKelamin' =>  'required',
-            'textNoTelepon' =>  'required',
-            'textAlamat'    =>  'required',
-            'textEmail' =>  'required|unique:users,email',
-            'textPassword'  =>  'required',
-            'selectJabatan' =>  'required'
+            'textNik'               =>  'required|unique:users,nik',
+            'textNama'              =>  'required',
+            'selectJenisKelamin'    =>  'required',
+            'textNoTelepon'         =>  'required',
+            'textAlamat'            =>  'required',
+            'textEmail'             =>  'required|unique:users,email',
+            'textPassword'          =>  'required',
+            'selectJabatan'         =>  'required'
         ]);
         $dataSimpanPegawai = [
             'nik'   =>  $request->textNik,
@@ -64,7 +64,7 @@ class PegawaiController extends Controller
             'alamat'    =>  $request->textAlamat,
             'email' =>  $request->textEmail,
             'password'  =>  bcrypt($request->textPassword),
-            'role'  =>  'Admin', 'Petugas'
+            'role'  =>  'Petugas'
         ];
         // ddd($dataSimpanPegawai);
         User::create($dataSimpanPegawai);

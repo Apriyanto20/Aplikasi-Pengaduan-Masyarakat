@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriPengaduan;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -17,7 +18,8 @@ class KategoriController extends Controller
             'tittle'    => 'APM | Kategori',
             'header'    =>  'Kategori',
             'breadcrumb1' =>  'Kategori',
-            'breadcrumb2' =>  'Index'
+            'breadcrumb2' =>  'Index',
+            'dataKategori'  =>  KategoriPengaduan::all()
         ]);
     }
 
@@ -43,8 +45,17 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {$request->validate([
+        'textNamaKategori'               =>  'required',
+        'textDeskripsi'                  =>  'required',
+    ]);
+    $dataSimpanKategori = [
+        'namacategory'   =>  $request->textNamaKategori,
+        'deskripsi'  =>  $request->textDeskripsi,
+    ];
+        // ddd($dataSimpanKategori);
+        KategoriPengaduan::create($dataSimpanKategori);
+        return redirect('/kategori');
     }
 
     /**
