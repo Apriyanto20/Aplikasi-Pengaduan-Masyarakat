@@ -20,12 +20,18 @@
                                             <div class="form form-group">
                                                 <label for="textNik">NIK</label>
                                                 <input type="text" name="textNik" id="textNik" class="form form-control"
-                                                    placeholder="Contoh : 320717XXXXXXX">
+                                                    placeholder="Contoh : 320717XXXXXXX" autofocus autocomplete="off">
+                                                    @error('textNik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                             </div>
                                             <div class="form form-group">
                                                 <label for="textNama">Nama</label>
                                                 <input type="text" name="textNama" id="textNama" class="form form-control"
-                                                    placeholder="Nama Lengkap">
+                                                    placeholder="Nama Lengkap" autocomplete="off">
+                                                    @error('textNik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                             </div>
                                             <div class="form form-group">
                                                 <label for="selectJenisKelamin">Jenis Kelamin</label>
@@ -38,24 +44,36 @@
                                             </div>
                                             <div class="form form-group">
                                                 <label for="textNoTelepon">No Telepon</label>
-                                                <input type="text" name="textNoTelepon" class="form form-control" id="textNoTelepon" placeholder="Contoh : +6282222777">
+                                                <input type="text" name="textNoTelepon" class="form form-control" id="textNoTelepon" placeholder="Contoh : +6282222777" autocomplete="off">
+                                                @error('textNik')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form form-group">
                                                 <label for="textAlamat">Alamat</label>
                                                 <textarea name="textAlamat" id="textAlamat" cols="30" rows="1"
-                                                    class="form form-control" placeholder="Alamat Lengkap"></textarea>
+                                                    class="form form-control" placeholder="Alamat Lengkap" autocomplete="off">
+                                                    @error('textNik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror</textarea>
                                             </div>
                                             <div class="form form-group">
                                                 <label for="textEmail">Email</label>
                                                 <input type="email" name="textEmail" class="form form-control"
-                                                    id="textEmail" placeholder="contoh : apm@gmail.com">
+                                                    id="textEmail" placeholder="contoh : apm@gmail.com" autocomplete="off">
+                                                    @error('textNik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                             </div>
                                             <div class="form form-group">
                                                 <label for="textPassword">Password</label>
                                                 <input type="password" name="textPassword" class="form form-control"
-                                                    id="textPassword">
+                                                    id="textPassword" autocomplete="off">
+                                                    @error('textNik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                             </div>
                                             {{-- <div class="form form-group">
                                                 <label for="selectJabatan">Jabatan</label>

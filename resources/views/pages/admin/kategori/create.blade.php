@@ -17,11 +17,17 @@
                     <div class="col-md-6">
                         <div class="form form-group">
                             <label for="textNamaKategori">Nama Kategori</label>
-                            <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control">
+                            <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control" autofocus autocomplete="off">
+                            @error('textNamaKategori')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form form-group">
                             <label for="textDeskripsi">Deskripsi</label>
-                            <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control">
+                            <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control" autocomplete="off">
+                            @error('textDeskripsi')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <button type="submit" class="btn btn-success btn-md float-right"><li class="fa fa-save"></li> Simpan</button>

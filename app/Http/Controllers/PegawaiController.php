@@ -126,7 +126,7 @@ class PegawaiController extends Controller
             'alamat'    =>  $request->textAlamat,
             'email' =>  $request->textEmail,
             'password'  =>  bcrypt($request->textPassword),
-            'role'  =>  'Admin', 'Petugas'
+            'role'  =>  'Petugas'
         ];
         // ddd($dataSimpanPegawai);
         User::where('id', $id)->update($dataSimpanPegawai);

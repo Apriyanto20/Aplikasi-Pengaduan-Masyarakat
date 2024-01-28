@@ -44,13 +44,19 @@
                                                         <label for="textNik">NIK</label>
                                                         <input type="text" name="textNik" id="textNik"
                                                             class="form form-control"
-                                                            placeholder="Contoh : 320717XXXXXXX" value="{{ $dataPegawai->nik }}">
+                                                            placeholder="Contoh : 320717XXXXXXX"  value="{{ $dataPegawai->nik }}" autocomplete="off">
+                                                            @error('textNik')
+                                                                <small class="text-danger">{{ $message }}</small>
+                                                            @enderror
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="textNama">Nama</label>
                                                         <input type="text" name="textNama" id="textNama"
                                                             class="form form-control"
-                                                            placeholder="Nama Lengkap" value="{{ $dataPegawai->name }}">
+                                                            placeholder="Nama Lengkap" value="{{ $dataPegawai->name }}" autocomplete="off">
+                                                            @error('textNama')
+                                                                <small class="text-danger">{{ $message }}</small>
+                                                            @enderror
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="selectJenisKelamin">Jenis Kelamin</label>
@@ -64,14 +70,20 @@
                                                     <div class="form form-group">
                                                         <label for="textNoTelepon">No Telepon</label>
                                                         <input type="text" class="form form-control"
-                                                            id="textNoTelepon" placeholder="contoh : +627788788787" value="{{ $dataPegawai->notelepon }}">
+                                                            id="textNoTelepon" placeholder="contoh : +627788788787" value="{{ $dataPegawai->notelepon }}" autocomplete="off">
+                                                            @error('textNoTelepon')
+                                                                <small class="text-danger">{{ $message }}</small>
+                                                            @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="form form-group">
                                                         <label for="textAlamat">Alamat</label>
                                                         <textarea name="textAlamat" id="textAlamat" cols="30"
-                                                            rows="1" class="form form-control" placeholder="Alamat Lengkap">{{ $dataPegawai->alamat }}</textarea>
+                                                            rows="1" class="form form-control" placeholder="Alamat Lengkap" autocomplete="off">{{ $dataPegawai->alamat }}</textarea>
+                                                            @error('textAlamat')
+                                                                <small class="text-danger">{{ $message }}</small>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="form form-group">
@@ -79,14 +91,16 @@
                                                         <select name="selectJabatan" id="selectJabatan"
                                                             class="form form-control">
                                                             <option value="">-- Pilih Jabatan --</option>
-                                                            <option value="Admin" {{ $dataPegawai->role == 'Admin' ? 'selected':'' }}>Admin</option>
                                                             <option value="Petugas" {{ $dataPegawai->role == 'Petugas' ? 'selected':'' }}>Petugas</option>
                                                         </select>
                                                     </div>
                                                     <div class="form form-group">
                                                         <label for="textEmail">Email</label>
                                                         <input type="email" name="textEmail"
-                                                            class="form form-control" id="textEmail" placeholder="contoh : apm@gmail.com" value="{{ $dataPegawai->email }}">
+                                                            class="form form-control" id="textEmail" placeholder="contoh : apm@gmail.com" value="{{ $dataPegawai->email }}" autocomplete="off">
+                                                            @error('textEmail')
+                                                                <small class="text-danger">{{ $message }}</small>
+                                                            @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 col-sm-12">

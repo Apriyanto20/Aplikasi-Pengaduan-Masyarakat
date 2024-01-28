@@ -21,12 +21,18 @@
                                         <div class="form form-group">
                                             <label for="textNik">NIK</label>
                                             <input type="text" name="textNik" id="textNik" class="form form-control"
-                                                placeholder="Contoh : 320717XXXXXXX" value="{{ $dataMasyarakat->nik }}">
+                                                placeholder="Contoh : 320717XXXXXXX" value="{{ $dataMasyarakat->nik }}" autocomplete="off">
+                                                @error('textNik')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                         <div class="form form-group">
                                             <label for="textNama">Nama</label>
                                             <input type="text" name="textNama" id="textNama" class="form form-control"
-                                                placeholder="Nama Lengkap" value="{{ $dataMasyarakat->name }}">
+                                                placeholder="Nama Lengkap" value="{{ $dataMasyarakat->name }}" autocomplete="off">
+                                                @error('textNama')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                         <div class="form form-group">
                                             <label for="selectJenisKelamin">Jenis Kelamin</label>
@@ -39,24 +45,36 @@
                                         </div>
                                         <div class="form form-group">
                                             <label for="textNoTelepon">No Telepon</label>
-                                            <input type="text" name="textNoTelepon" class="form form-control" id="textNoTelepon" value="{{ $dataMasyarakat->notelepon }}">
+                                            <input type="text" name="textNoTelepon" autocomplete="off" class="form form-control" id="textNoTelepon" value="{{ $dataMasyarakat->notelepon }}" autocomplete="off">
+                                                @error('textNoTelepon')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form form-group">
                                             <label for="textAlamat">Alamat</label>
                                             <textarea name="textAlamat" id="textAlamat" cols="30" rows="1"
-                                                class="form form-control">{{ $dataMasyarakat->alamat }}</textarea>
+                                                class="form form-control" autocomplete="off">{{ $dataMasyarakat->alamat }}</textarea>
+                                                @error('textNama')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                         <div class="form form-group">
                                             <label for="textEmail">Email</label>
                                             <input type="email" name="textEmail" class="form form-control"
-                                                id="textEmail" value="{{ $dataMasyarakat->email }}">
+                                                id="textEmail" autocomplete="off" value="{{ $dataMasyarakat->email }}">
+                                                @error('textNama')
+                                                <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                         <div class="form form-group">
                                             <label for="textPassword">Password</label>
                                             <input type="password" name="textPassword" class="form form-control"
-                                                id="textPassword">
+                                                id="textPassword" autocomplete="off">
+                                                @error('textNama')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-sm-12">

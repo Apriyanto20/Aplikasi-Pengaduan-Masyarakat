@@ -81,7 +81,8 @@ class KategoriController extends Controller
             'tittle'    => 'APM | Kategori Edit',
             'header'    =>  'Kategori Edit',
             'breadcrumb1' =>  'Kategori Edit',
-            'breadcrumb2' =>  'Edit'
+            'breadcrumb2' =>  'Edit',
+            'dataKategori'  =>  KategoriPengaduan::where('id', $id)->first()
         ]);
     }
 
@@ -94,7 +95,16 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'textNamaKategori'               =>  'required',
+            'textDeskripsi'                  =>  'required',
+        ]);
+        $dataKategori = [
+            'namacategory'   =>  $request->textNamaKategori,
+            'deskripsi'  =>  $request->textDeskripsi,
+        ];
+        KategoriPengaduan::where('id', $id)->update($dataKategori);
+        return redirect('/kategori');
     }
 
     /**

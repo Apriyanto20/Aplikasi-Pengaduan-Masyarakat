@@ -13,17 +13,26 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <form action="/kategori/{{ $dataKategori->id }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                 <div class="col-md-6">
                                     <div class="form form-group">
                                         <label for="textNamaKategori">Nama Kategori</label>
-                                        <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control">
+                                        <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control" value="{{ $dataKategori->namacategory }}" autofocus autocomplete="off">
+                                        @error('textNamaKategori')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form form-group">
                                         <label for="textDeskripsi">Deskripsi</label>
-                                        <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control">
+                                        <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control"  value="{{ $dataKategori->deskripsi }}" autocomplete="off">
+                                        @error('textDeskripsi')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form form-group">
-                                        <a href="kategori.html" class="btn btn-success btn-md"><li class="fa fa-save"></li> Simpan</a>
+                                        <button type="submit" class="btn btn-success btn-md"><li class="fa fa-save"></li> Simpan</button>
                                     </div>
                                 </div>
                             </div>

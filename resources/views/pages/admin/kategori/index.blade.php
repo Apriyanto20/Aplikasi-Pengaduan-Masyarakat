@@ -30,7 +30,7 @@
                                     <td>{{ $kategori->namacategory }}</td>
                                     <td>{{ $kategori->deskripsi }}</td>
                                     <td>
-                                        <a href="/kategori/1/edit" class="btn btn-warning btn-xs"
+                                        <a href="/kategori/{{ $kategori->id }}/edit" class="btn btn-warning btn-xs"
                                             title="Edit Masyarakat">
                                             <li class="fa fa-edit"></li>
                                         </a>
