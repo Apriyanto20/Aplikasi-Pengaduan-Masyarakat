@@ -28,18 +28,20 @@ Route::get('/', function () {
     return view('pages.user.index');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::resource('/masyarakat', MasyarakatController::class);
-Route::resource('/pegawai', PegawaiController::class);
-Route::resource('/kategori', KategoriController::class);
-Route::get('/laporanmasuk', [LaporanMasukController::class, 'index']);
-Route::get('/laporanmasuk/detail/{id}', [LaporanMasukController::class, 'detail']);
-Route::get('/generatereport', [GenerateReportController::class, 'index']);
-Route::get('/generatereport/periode', [GenerateReportController::class, 'periode']);
-Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/profile/detail', [ProfileController::class, 'detail']);
-Route::get('/loginadmin', [LoginAdminController::class, 'index']);
+Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/masyarakat', MasyarakatController::class);
+    Route::resource('/pegawai', PegawaiController::class);
+    Route::resource('/kategori', KategoriController::class);
+    Route::get('/laporanmasuk', [LaporanMasukController::class, 'index']);
+    Route::get('/laporanmasuk/detail/{id}', [LaporanMasukController::class, 'detail']);
+    Route::get('/generatereport', [GenerateReportController::class, 'index']);
+    Route::get('/generatereport/periode', [GenerateReportController::class, 'periode']);
+    Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::get('/profile/detail', [ProfileController::class, 'detail']);
+    Route::get('/loginadmin', [LoginAdminController::class, 'index']);
+});
 
 
 //user

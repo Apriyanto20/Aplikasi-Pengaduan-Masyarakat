@@ -54,6 +54,7 @@ class PegawaiController extends Controller
             'textAlamat'            =>  'required',
             'textEmail'             =>  'required|unique:users,email',
             'textPassword'          =>  'required',
+
         ]);
         $dataSimpanPegawai = [
             'nik'   =>  $request->textNik,
