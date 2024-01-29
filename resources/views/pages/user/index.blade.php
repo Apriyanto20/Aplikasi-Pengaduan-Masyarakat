@@ -166,6 +166,8 @@
                 <h4 class="card-title text-center">Form Register</h4>
               </div>
               <div class="card-body">
+                <form action="/" method="post">
+                @csrf
                 <div class="form form-group">
                   <label for="textNik">NIK</label>
                   <input type="text" name="textNik" class="form form-control" placeholder="contoh : 3201234556777">
@@ -200,9 +202,10 @@
                   <input type="password" name="textPassword" class="form form-control">
                 </div>
                 <!-- <div class="form form-group mt-3 d-flex align-items-center justify-content-between"> -->
-                <button type="button" class="btn btn-success btn-md mt-4 btn-block"><i class="bi bi-card-checklist"></i> Register</button>
+                <button type="submit" class="btn btn-success btn-md mt-4 btn-block"><i class="bi bi-card-checklist"></i> Register</button>
                 <!-- </div> -->
               </div>
+            </form>
             </div>
 
           </div>

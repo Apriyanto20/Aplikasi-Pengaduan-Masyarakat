@@ -53,9 +53,9 @@ class LaporanMasukController extends Controller
         }
         // Get Data Nya
         $data = DB::table('pengaduan')
-        ->leftJoin('users','pengaduan.masyarakat_id','-','users.id')
-        ->leftJoin('kategoripengaduan','pengaduan.kategori_id','-','kategoripengaduan.id')
-        ->select('pengaduan.*', 'users.name', 'kategoripengaduan.namacategory');
+        ->leftJoin('users','pengaduan.masyarakat_id','users.id')
+        ->leftJoin('kategoripengaduan','pengaduan.kategori_id','kategoripengaduan.id')
+        ->select('pengaduan.*','users.name','kategoripengaduan.namacategory');
         // Function filter dari inputan search
         if($request->input('search.value')!= null){
             $data = $data->where(function($q)use($request){

@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserPerngaduanController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,8 @@ Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 //user
 Route::resource('/pengaduanku', UserPerngaduanController::class);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
+Route::get('/', [RegisterController::class, 'index']);
+Route::post('/', [RegisterController::class, 'auth']);
 
 
 //authentification admin

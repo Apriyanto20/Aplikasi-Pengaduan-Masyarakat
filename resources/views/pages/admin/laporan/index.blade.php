@@ -114,7 +114,7 @@ const table = $('#example5').DataTable({
         "targets"   : 4, //Untuk urutan data di dalam kolom
         "class"     : "text-nowrap",
         "render"    : function(data, type, row, meta){
-            return row.namakategori
+            return row.namacategory
         }
     },
     {
@@ -125,7 +125,7 @@ const table = $('#example5').DataTable({
         }
     },
     {
-        "targets"   : 5, //Untuk urutan data di dalam kolom
+        "targets"   : 6, //Untuk urutan data di dalam kolom
         "class"     : "text-nowrap",
         "render"    : function(data, type, row, meta){
             return '<button class="btn btn-primary btn-xs"></button>'
