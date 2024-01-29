@@ -128,7 +128,7 @@ const table = $('#example5').DataTable({
         "targets"   : 6, //Untuk urutan data di dalam kolom
         "class"     : "text-nowrap",
         "render"    : function(data, type, row, meta){
-            return '<button class="btn btn-primary btn-xs"></button>'
+            return '<a href="laporanmasuk/detail/$(row.id)"><li class="fa fa-list"></li></a>'
         }
     },
 ]

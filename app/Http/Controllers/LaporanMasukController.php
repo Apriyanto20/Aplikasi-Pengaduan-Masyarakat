@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +26,9 @@ class LaporanMasukController extends Controller
             'tittle'    => 'APM | Laporan Masuk',
             'header'    =>  'Laporan Masuk',
             'breadcrumb1' =>  'Laporan Masuk',
-            'breadcrumb2' =>  'Detail'
+            'breadcrumb2' =>  'Detail',
+            'detailUser'=> User::all(),
+            'detailPengaduan' => Pengaduan::all()
         ]);
     }
 
