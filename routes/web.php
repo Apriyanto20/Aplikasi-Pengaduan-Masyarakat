@@ -40,9 +40,10 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
     Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/profile/detail', [ProfileController::class, 'detail']);
-    Route::get('/loginadmin', [LoginAdminController::class, 'index']);
+
 });
 
+Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 
 //user
 Route::resource('/pengaduanku', UserPerngaduanController::class);

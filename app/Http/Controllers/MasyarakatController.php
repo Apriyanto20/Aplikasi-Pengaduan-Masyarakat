@@ -51,10 +51,10 @@ class MasyarakatController extends Controller
             'textNik'   =>  'required|unique:users,nik',
             'textNama'  =>  'required',
             'selectJenisKelamin' =>  'required',
-            'textNoTelepon' =>  'required',
+            'textNoTelepon' =>  'required', 'min:12',
             'textAlamat'    =>  'required',
             'textEmail' =>  'required|unique:users,email',
-            'textPassword'  =>  'required'
+            'textPassword'  =>  'required', 'min:6'
         ]);
         $dataSimpanMasyarakat = [
             'nik'   =>  $request->textNik,
@@ -118,10 +118,10 @@ class MasyarakatController extends Controller
             'textNik'   =>  'required',
             'textNama'  =>  'required',
             'selectJenisKelamin' =>  'required',
-            'textNoTelepon' =>  'required',
+            'textNoTelepon' =>  'required', 'min:12',
             'textAlamat'    =>  'required',
             'textEmail' =>  'required',
-            'textPassword'  =>  'required'
+            'textPassword'  =>  'required', 'min:6'
         ]);
         $dataSimpanMasyarakat = [
             'nik'   =>  $request->textNik,

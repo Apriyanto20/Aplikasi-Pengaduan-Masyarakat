@@ -22,7 +22,7 @@ class LoginAdminController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }else{
-            return redirect('/loginadmin');
+            return redirect('/loginadmin')->with('loginError', 'Email atau Password salah!');
         }
     }
     public function signoutAdmin(Request $request)
