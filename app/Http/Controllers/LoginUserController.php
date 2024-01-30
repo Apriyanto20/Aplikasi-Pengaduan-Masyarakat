@@ -18,11 +18,14 @@ class LoginUserController extends Controller
             'email' =>  'required',
             'password'  =>  'required'
         ]);
-        if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
+        if(Auth::attempt($dataValidasi)){
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            $role = auth()->user()->role;
+            if ($role == 'Masyarakat'){
+                return redirect()->intended('/pengaduanku');
+            }
         }else{
-            return redirect('/');
+            return back();
         }
     }
 }

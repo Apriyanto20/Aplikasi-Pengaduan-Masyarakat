@@ -5,6 +5,7 @@ use App\Http\Controllers\GenerateReportController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanMasukController;
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
@@ -46,10 +47,15 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
 Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 
 //user
-Route::resource('/pengaduanku', UserPerngaduanController::class);
+Route::middleware(['masyarakat'])->group(function() {
+    Route::resource('/pengaduanku', UserPerngaduanController::class);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
+});
+
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);
+Route::get('/', [LoginUserController::class, 'index']);
+Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 
 
 //authentification admin

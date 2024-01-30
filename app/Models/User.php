@@ -18,16 +18,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'nik',
-        'name',
-        'email',
-        'password',
-        'jenis_kelamin',
-        'alamat',
-        'role',
-        'notelepon'
-    ];
+    // protected $fillable = [
+    //     'nik',
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'jenis_kelamin',
+    //     'alamat',
+    //     'role',
+    //     'notelepon'
+    // ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -60,4 +60,6 @@ class User extends Authenticatable
     {
         return $this->hasMany('users_id', 'pengaduan_id', 'id');
     }
+
+    protected $guarded = ['id'];
 }
