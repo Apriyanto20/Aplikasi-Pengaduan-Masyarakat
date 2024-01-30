@@ -190,6 +190,7 @@
                                     <div class="form form-group mt-3">
                                         <label for="selectJenisKelamin">Jenis Kelamin</label>
                                         <select name="selectJenisKelamin" class="form form-control">
+                                            <option value="">-- Pilih Jenis Kelamin --</option>
                                             <option value="Laki-laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>

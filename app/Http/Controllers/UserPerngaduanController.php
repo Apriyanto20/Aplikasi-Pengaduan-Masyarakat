@@ -52,6 +52,7 @@ class UserPerngaduanController extends Controller
             'gambar'     =>  'required',
             'status'    => 'New'
         ]);
+        // dd(request()->all());
         // dd($dataSimpanPengaduanku);
         Pengaduan::create($dataSimpanPengaduanku);
 
