@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\gambar;
+use App\Models\KategoriPengaduan;
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
 class UserPerngaduanController extends Controller
@@ -13,7 +16,10 @@ class UserPerngaduanController extends Controller
      */
     public function index()
     {
-        return view('pages.user.pengaduanku.index');
+        return view('pages.user.pengaduanku.index', [
+            'dataKategori'  => KategoriPengaduan::where('namacategory'),
+            'dataPengaduanku'   =>  Pengaduan::where('judul')
+        ]);
     }
 
     /**
@@ -23,7 +29,10 @@ class UserPerngaduanController extends Controller
      */
     public function create()
     {
-        return view('pages.user.pengaduanku.create');
+        return view('pages.user.pengaduanku.create', [
+            'dataKategori'  => KategoriPengaduan::all(),
+            'dataPengaduanku'   =>  Pengaduan::all()
+        ]);
     }
 
     /**
@@ -34,7 +43,35 @@ class UserPerngaduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataSimpanPengaduanku = $request->validate([
+            'masyarakat_id' => 'required',
+            'judul'    => 'required',
+            'kategori_id' =>  'required',
+            'isipengaduan'  =>  'required',
+            'tanggalpengaduan'  =>  'required',
+            'gambar'     =>  'required',
+            // 'status'    => 'required'
+        ]);
+        // ddd($dataSimpanPengaduanku);
+        Pengaduan::create($dataSimpanPengaduanku);
+
+        $gambar = Pengaduan::latest()->first();
+        $files = $request->file('gambar');
+
+        foreach ($files as $multifiles) {
+            if ($request->hasfile('gambar')) {
+                $nama = hexdec(uniqid());
+                $ekstensi = strtolower($multifiles->getClientOriginalExtension());
+                $filenamesave = $nama.'.'.$ekstensi;
+                $multifiles->move('img-galeri', $filenamesave);
+                gambar::create([
+                    'id_pengaduan' =>$gambar->id,
+                    'gambar' =>$filenamesave
+                ]);
+            }
+        }
+            return redirect('/pengaduanku');
+
     }
 
     /**

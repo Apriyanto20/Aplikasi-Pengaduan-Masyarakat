@@ -29,4 +29,9 @@ class Pengaduan extends Model
         return $this->belongsTo('users', 'masyarakat_id', 'id');
     }
 
+    public function gambar()
+    {
+        return $this->hasMany(gambar::class, 'id_pengaduan', 'id');
+    }
+
 }
