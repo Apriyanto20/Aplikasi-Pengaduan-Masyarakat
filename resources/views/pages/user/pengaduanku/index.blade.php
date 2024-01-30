@@ -16,13 +16,18 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($dataPengaduanku as $pengaduan)
             <tr>
-              <td>1</td>
-              <td>Limbah Pabrik ABCD</td>
-              <td>Pencemaran</td>
-              <td>Prosess</td>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $pengaduan->judul }}</td>
+              @foreach ($dataKategori as $kategori)
+              <td>{{ $kategori->namacategory }}</td>
+              @endforeach
+              <td>{{ $pengaduan->status }}</td>
               <td><a href="user-detail-pengaduanku.html" class="btn btn-primary btn-sm">Detail</a></td>
             </tr>
+            @endforeach
+
           </tbody>
         </table>
       </p>

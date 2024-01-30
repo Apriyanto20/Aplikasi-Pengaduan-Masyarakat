@@ -19,7 +19,7 @@ class CreatePengaduanTable extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->date('tanggalpengaduan');
             $table->text('isipengaduan');
-            $table->enum('status', ['New', 'Process', 'Selesai', 'Di Tolak'])->default('New');
+            $table->enum('status', ['New', 'Process', 'Selesai', 'DiTolak'])->default('New');
             $table->timestamps();
         });
     }

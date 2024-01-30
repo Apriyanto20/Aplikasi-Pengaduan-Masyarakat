@@ -50,12 +50,13 @@ Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 Route::middleware(['masyarakat'])->group(function() {
     Route::resource('/pengaduanku', UserPerngaduanController::class);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
+Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 });
 
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);
 Route::get('/', [LoginUserController::class, 'index']);
-Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
+
 
 
 //authentification admin

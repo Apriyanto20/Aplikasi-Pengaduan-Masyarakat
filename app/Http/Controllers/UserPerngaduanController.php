@@ -17,8 +17,8 @@ class UserPerngaduanController extends Controller
     public function index()
     {
         return view('pages.user.pengaduanku.index', [
-            'dataKategori'  => KategoriPengaduan::where('namacategory'),
-            'dataPengaduanku'   =>  Pengaduan::where('judul')
+            'dataKategori'  => KategoriPengaduan::all(),
+            'dataPengaduanku'   =>  Pengaduan::all()
         ]);
     }
 
@@ -50,9 +50,9 @@ class UserPerngaduanController extends Controller
             'isipengaduan'  =>  'required',
             'tanggalpengaduan'  =>  'required',
             'gambar'     =>  'required',
-            // 'status'    => 'required'
+            'status'    => 'New'
         ]);
-        // ddd($dataSimpanPengaduanku);
+        // dd($dataSimpanPengaduanku);
         Pengaduan::create($dataSimpanPengaduanku);
 
         $gambar = Pengaduan::latest()->first();

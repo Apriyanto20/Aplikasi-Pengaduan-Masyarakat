@@ -8,8 +8,9 @@
             <div class="row">
                 <form action="/pengaduanku" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="masyarakat_id" id="" value="{{ auth()->user()->id }}">
+
                     <div class="col-md-8">
-                        <input type="hidden" name="masyarakat_id" id="" value="{{ auth()->user()->id }}">
                         <div class="form form-group">
                             <label for="judul">Judul Pengaduan</label>
                             <input type="text" name="judul" class="form form-control" id="judul">
@@ -27,17 +28,19 @@
                             <label for="isipengaduan">Isi Pengaduan</label>
                             <textarea name="isipengaduan" name="isipengaduan" class="form form-control" id="" cols="30" rows="10"></textarea>
                         </div>
-                        <input type="date" name="tanggalpengaduan" id="" class="form-control">
+                        <div class="form form-group mt-3">
+                            <label for="tanggalpengaduan">Tanggal Pengaduan</label>
+                            <input type="date" name="tanggalpengaduan" id="" class="form-control mt-3">
+                        </div>
                         <div class="form form-group mt-3">
                             <label for="gambar">Lampiran Foto Pengaduan</label> <br>
                             <input type="file" name="gambar[]" multiple="" id="gambar" class="form form-control"
                                 accept="image">
                         </div>
-                        {{-- <input type="text" name="status" id=""> --}}
                         <div class="form form-group mt-3">
                             <button type="submit" class="btn btn-success btn-md"> Simpan</button>
                         </div>
-                    </div>
+                    </input>
                 </form>
             </div>
             </p>
