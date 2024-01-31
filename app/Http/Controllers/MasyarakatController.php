@@ -145,6 +145,7 @@ class MasyarakatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+        return redirect('/masyarakat');
     }
 }

@@ -6,10 +6,9 @@
             <hr>
             <p>
             <div class="row">
-                <form action="/pengaduanku" method="post" enctype="multipart/form-data">
+                <form action="/pengaduanku" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="masyarakat_id" id="" value="{{ auth()->user()->id }}">
-
                     <div class="col-md-8">
                         <div class="form form-group">
                             <label for="judul">Judul Pengaduan</label>

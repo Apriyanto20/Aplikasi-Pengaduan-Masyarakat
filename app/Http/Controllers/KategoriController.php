@@ -115,7 +115,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        KategoriPengaduan::where('id', $id)->dalete();
+        KategoriPengaduan::where('id', $id)->delete();
         return redirect('/kategori');
     }
 }

@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
     Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/profile/detail', [ProfileController::class, 'detail']);
+    Route::post('/logout',[DashboardController::class,'logout']);
 
 });
 
@@ -49,13 +50,13 @@ Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 //user
 Route::middleware(['masyarakat'])->group(function() {
 Route::resource('/pengaduanku', UserPerngaduanController::class);
+Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
 });
 
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);
 Route::get('/', [LoginUserController::class, 'index']);
-Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 
 
 
@@ -63,3 +64,4 @@ Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 //authentification admin
 Route::post('/authadmin', [LoginAdminController::class, 'authadmin']);
 Route::any('/dataTableLaporan',[LaporanMasukController::class, 'getDataLaporan']);
+Route::any('/TableLaporan',[DashboardController::class, 'DataLaporan']);

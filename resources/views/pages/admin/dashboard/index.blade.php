@@ -9,9 +9,11 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Masyarakat</span>
+                        <a href="/masyarakat">
                         <span class="info-box-number">
-                            10
+                            {{ $Masyarakat }}
                         </span>
+                        </a>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -24,7 +26,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Kategori Pengaduan</span>
                         <span class="info-box-number">
-                            10
+                            {{ $Kategori }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -38,7 +40,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Laporan Pengaduan</span>
                         <span class="info-box-number">
-                            1.000
+                            {{ $LaporanMasuk }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -52,7 +54,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Laporan Baru</span>
                         <span class="info-box-number">
-                            200
+                            {{ $Terbaru }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -81,13 +83,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>12-12-2022</td>
-                                    <td>Limbah Pabrik ABCD</td>
-                                    <td>Pencemaran</td>
-                                    <td><button class="btn btn-primary btn-xs">
-                                            <li class="fa fa-list"></li>
-                                        </button> </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -101,4 +97,65 @@
 <!-- /.row -->
 </section>
 @endsection
+@section('js')
+<script type="text/javascript">
+const table = $('#example1').DataTable({
+    "pageLength"    : 10,
+    "lengthMenu"    : [
+        [10, 25, 50, 100],
+        [10, 25, 50, 100]
+    ],
+    "bLengthChange" : true,
+    "bFilter"       : true,
+    "bInfo"         : true,
+    "processing"    : true,
+    "bServerSide"   : true,
+    ajax :{
+        url : "{{ url('') }}/dataTableLaporan",
+        type : "POST",
+    },
+    columnDefs: [{
+        targets : "_all",
+        visible : true,
+    },
+    {
+        "targets"   : 0, //Untuk urutan data di dalam kolom
+        "class"     : "text-nowrap",
+        "render"    : function(data, type, row, meta){
+            return row.id
+        }
+    },
+    {
+        "targets"   : 1, //Untuk urutan data di dalam kolom
+        "class"     : "text-nowrap",
+        "render"    : function(data, type, row, meta){
+            return row.tanggalpengaduan
+        }
+    },
+    {
+        "targets"   : 2, //Untuk urutan data di dalam kolom
+        "class"     : "text-nowrap",
+        "render"    : function(data, type, row, meta){
+            return row.judul
+        }
+    },
+    {
+        "targets"   : 3, //Untuk urutan data di dalam kolom
+        "class"     : "text-nowrap",
+        "render"    : function(data, type, row, meta){
+            return row.name
+        }
+    },
+    {
+        "targets"   : 4, //Untuk urutan data di dalam kolom
+        "class"     : "text-nowrap",
+        "render"    : function(data, type, row, meta){
+            return row.namacategory
+        }
+    },
+]
+})
+</script>
+@endsection
+
 
