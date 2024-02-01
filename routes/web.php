@@ -39,8 +39,8 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
     Route::get('/generatereport', [GenerateReportController::class, 'index']);
     Route::get('/generatereport/periode', [GenerateReportController::class, 'periode']);
     Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
-    Route::get('/profile', [ProfileController::class, 'index']);
-    Route::get('/profile/detail', [ProfileController::class, 'detail']);
+    Route::resource('/profile', ProfileController::class);
+    // Route::get('/profile/detail', [ProfileController::class, 'detail']);
     Route::post('/logout',[DashboardController::class,'logout']);
 
 });

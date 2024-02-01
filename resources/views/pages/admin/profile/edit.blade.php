@@ -1,24 +1,5 @@
 @extends('layouts.layoutsadmin')
 @section('content')
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Profile</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Profile</a></li>
-                                <li class="breadcrumb-item active">Ubah data Profile</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
             <!-- Main content -->
             <section class="content">
                 <div class="row">
@@ -52,47 +33,62 @@
                                                 </ul>
                                             </div>
                                             <div class="card-body">
+                                                <form action="/profile{{ $dataAdmin->id }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
                                                 <div class="tab-content" id="custom-tabs-three-tabContent">
                                                     <div class="tab-pane fade show active" id="custom-tabs-three-home"
                                                         role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="form form-group">
                                                                 <label for="textNik">NIK</label>
-                                                                <input type="text" name="textNik" id="textNik"
+                                                                <input type="text" name="textNik" value="{{ $dataAdmin->nik }}" id="textNik"
                                                                     class="form form-control"
                                                                     placeholder="Contoh : 320717XXXXXXX">
+                                                                    @error('textNik')
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textNama">Nama</label>
-                                                                <input type="text" name="textNama" id="textNama"
+                                                                <input type="text" name="textNama" value="{{ $dataAdmin->name }}" id="textNama"
                                                                     class="form form-control"
                                                                     placeholder="Nama Lengkap">
+                                                                    @error('textNik')
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="selectJenisKelamin">Jenis Kelamin</label>
-                                                                <select name="selectJenisKelamin"
-                                                                    id="selectJenisKelamin" class="form form-control">
+                                                                <select name="selectJenisKelamin" id="selectJenisKelamin"
+                                                                    class="form form-control">
                                                                     <option value="">-- Pilih Jenis Kelamin --</option>
-                                                                    <option value="Laki-laki">Laki-laki</option>
-                                                                    <option value="Perempuan">Perempuan</option>
+                                                                    <option value="Laki-laki"{{ $dataAdmin->jenis_kelamin == 'Laki-laki' ? 'selected':'' }}>Laki-laki</option>
+                                                                    <option value="Perempuan"{{ $dataAdmin->jenis_kelamin == 'Perempuan' ? 'selected':'' }}>Perempuan</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textNoTelepon">No Telepon</label>
-                                                                <input type="text" class="form form-control"
+                                                                <input type="text" name="textNoTelepon" value="{{ $dataAdmin->notelepon }}" class="form form-control"
                                                                     id="textNoTelepon"
                                                                     placeholder="contoh : +627788788787">
+                                                                    @error('textNik')
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <div class="form form-group">
                                                                 <label for="textAlamat">Alamat</label>
-                                                                <textarea name="textAlamat" id="textAlamat" cols="30"
+                                                                <input name="textAlamat" value="{{ $dataAdmin->alamat }}" id="textAlamat" cols="30"
                                                                     rows="1" class="form form-control"
-                                                                    placeholder="Alamat Lengkap"></textarea>
+                                                                    placeholder="Alamat Lengkap">
+                                                                    @error('textNik')
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                             </div>
 
-                                                            <div class="form form-group">
+                                                            {{-- <div class="form form-group">
                                                                 <label for="selectJabatan">Jabatan</label>
                                                                 <select name="selectJabatan" id="selectJabatan"
                                                                     class="form form-control">
@@ -100,18 +96,21 @@
                                                                     <option value="Admin">Admin</option>
                                                                     <option value="Petugas">Petugas</option>
                                                                 </select>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="form form-group">
                                                                 <label for="textEmail">Email</label>
-                                                                <input type="email" name="textEmail"
+                                                                <input type="email" name="textEmail" value="{{ $dataAdmin->email }}"
                                                                     class="form form-control" id="textEmail"
                                                                     placeholder="contoh : apm@gmail.com">
+                                                                    @error('textNik')
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-sm-12">
-                                                            <a href="pegawai.html" class="btn btn-success btn-md">
+                                                            <button type="submit" class="btn btn-success btn-md">
                                                                 <li class="fa fa-save"></li> Simpan
-                                                            </a href="/masyarakat.html">
+                                                            </button>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-three-profile"
@@ -135,6 +134,7 @@
                                                         </div>
 
                                                     </div>
+                                                </form>
                                                 </div>
                                             </div>
                                             <!-- /.card -->
@@ -150,6 +150,4 @@
                 </div>
                 <!-- /.row -->
             </section>
-            <!-- /.content -->
-        </div>
 @endsection
