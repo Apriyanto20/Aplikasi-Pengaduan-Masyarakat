@@ -12,13 +12,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                            @foreach ($detailPengaduan as $detail)
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="judulPengaduan">Judul</label>
                                         </div>
                                         <div class="col-sm-6">
-                                            : {{ $detail->judul }}
+                                            : {{ $detailPengaduan->judul }}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -26,7 +25,7 @@
                                             <label for="judulPengaduan">Kategori Pengaduan</label>
                                         </div>
                                         <div class="col-sm-6">
-                                            : {{ $detail->namacategory }}
+                                            {{-- : {{ $kategori->namacategory }} --}}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -34,10 +33,9 @@
                                             <label for="tanggalLaporan">Tanggal Laporan</label>
                                         </div>
                                         <div class="col-sm-6">
-                                            : 22 Oktober 2024
+                                            : {{ $detailPengaduan->tanggalpengaduan }}
                                         </div>
                                     </div>
-                            @endforeach
 
                             </div>
                             <div class="col-md-6">

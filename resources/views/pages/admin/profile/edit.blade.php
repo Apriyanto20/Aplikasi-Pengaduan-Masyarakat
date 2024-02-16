@@ -115,11 +115,19 @@
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-three-profile"
                                                         role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                                                        <form action="/profile/ubahPassword{{ auth()->user()->id }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
                                                         <div class="col-md-6 col-xs-6">
                                                             <div class="form form-group">
                                                                 <label for="textPassword">New Password</label>
                                                                 <input type="password" name="textPassword"
                                                                     class="form form-control" id="textPassword">
+                                                            </div>
+                                                            <div class="form form-group">
+                                                                <label for="password">Confirm Password</label>
+                                                                <input type="password" name="password"
+                                                                    class="form form-control" id="password">
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textNewPassword">Confirm Password</label>
@@ -132,7 +140,7 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-
+                                                        </form>
                                                     </div>
                                                 </form>
                                                 </div>

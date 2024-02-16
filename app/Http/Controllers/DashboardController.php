@@ -7,6 +7,7 @@ use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 use App\Models\KategoriPengaduan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -78,5 +79,28 @@ class DashboardController extends Controller
             'data'  => $data
         ]);
     }
+    // public function changePassword(Request $request)
+    // {
+    //     $request->validate([
+    //         'current_password' => ['required'],
+    //         'new_password' => ['required', 'min:5'],
+    //         'konfirmasi_password' => ['required', 'min:5']
+    //     ]);
+
+    //     if (Hash::check($request->current_password, auth()->user()->password))
+    //     {
+    //         if ($request->new_password != $request->konfirmasi_password)
+    //         {
+    //             return redirect('/profile/ubahpassword')->with('informasi', 'Sesuaikan antara password baru dengan konfirmasi password.');
+    //         } else {
+    //             auth()->user()->update(['password' => bcrypt($request->new_password)]);
+    //             return redirect('/profile')->with('informasi', 'Password Anda berhasil diperbarui.');
+    //         }
+    //     } else
+    //     {
+    //         return redirect('/profile/ubahpassword')->with('informasi', 'Password tidak sesuai.');
+    //     }
+    // }
+
 
 }
