@@ -48,11 +48,11 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
 Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 
 //user
-Route::middleware(['masyarakat'])->group(function() {
-Route::resource('/pengaduanku', UserPerngaduanController::class);
+// Route::middleware(['masyarakat'])->group(function() {
 Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 Route::get('/profileuser', [UserProfileController::class, 'index']);
-});
+// });
+Route::resource('/pengaduanmasuk', UserPerngaduanController::class);
 
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);

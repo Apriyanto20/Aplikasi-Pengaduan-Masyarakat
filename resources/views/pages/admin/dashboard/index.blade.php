@@ -78,13 +78,19 @@
                                     <th>Tgl Pengaduan</th>
                                     <th>Judul Pengaduan</th>
                                     <th>Kategori</th>
-                                    <th>Aksi</th>
+                                    {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($datamasuk as $item)
                                 <tr>
-
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->tanggalpengaduan }}</td>
+                                    <td>{{ $item->judul }}</td>
+                                    <td>{{ $item->kategoripengaduan->namacategory }}</td>
                                 </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -97,65 +103,6 @@
 <!-- /.row -->
 </section>
 @endsection
-@section('js')
-<script type="text/javascript">
-const table = $('#example1').DataTable({
-    "pageLength"    : 10,
-    "lengthMenu"    : [
-        [10, 25, 50, 100],
-        [10, 25, 50, 100]
-    ],
-    "bLengthChange" : true,
-    "bFilter"       : true,
-    "bInfo"         : true,
-    "processing"    : true,
-    "bServerSide"   : true,
-    ajax :{
-        url : "{{ url('') }}/dataTableLaporan",
-        type : "POST",
-    },
-    columnDefs: [{
-        targets : "_all",
-        visible : true,
-    },
-    {
-        "targets"   : 0, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.id
-        }
-    },
-    {
-        "targets"   : 1, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.tanggalpengaduan
-        }
-    },
-    {
-        "targets"   : 2, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.judul
-        }
-    },
-    {
-        "targets"   : 3, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.name
-        }
-    },
-    {
-        "targets"   : 4, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.namacategory
-        }
-    },
-]
-})
-</script>
-@endsection
+
 
 

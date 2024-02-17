@@ -2,7 +2,7 @@
 @section('contentuser')
 <section class="inner-page">
     <div class="container table-responsive">
-      <a href="/pengaduanku/create" class="btn btn-success btn-md"> Buat Pengaduan</a>
+      <a href="/pengaduanmasuk/create" class="btn btn-success btn-md"> Buat Pengaduan</a>
       <hr>
       <p>
         <table class="table table-responsive table-hover">
@@ -20,9 +20,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $pengaduan->judul }}</td>
-              @foreach ($dataKategori as $kategori)
-              <td>{{ $kategori->namacategory }}</td>
-              @endforeach
+              <td>{{ $pengaduan->kategoripengaduan->namacategory }}</td>
               <td>{{ $pengaduan->status }}</td>
               <td><a href="user-detail-pengaduanku.html" class="btn btn-primary btn-sm">Detail</a></td>
             </tr>

@@ -19,10 +19,12 @@ class LaporanMasukController extends Controller
     {
 
         return view('pages.admin.laporan.index', [
-            'tittle'    => 'APM | Laporan Masuk',
-            'header'    =>  'Laporan Masuk',
-            'breadcrumb1' =>  'Laporan Masuk',
-            'breadcrumb2' =>  'Index'
+            'tittle'        => 'APM | Laporan Masuk',
+            'header'        =>  'Laporan Masuk',
+            'breadcrumb1'   =>  'Laporan Masuk',
+            'breadcrumb2'   =>  'Index',
+            'dataMasuk'     => Pengaduan::all(),
+            'dataKategori'  => KategoriPengaduan::all()
         ]);
     }
 

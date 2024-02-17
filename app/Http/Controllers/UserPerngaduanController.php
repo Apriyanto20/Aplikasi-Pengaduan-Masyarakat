@@ -17,7 +17,7 @@ class UserPerngaduanController extends Controller
     public function index()
     {
         return view('pages.user.pengaduanku.index', [
-            'dataKategori'  => KategoriPengaduan::all(),
+            // 'dataKategori'  => KategoriPengaduan::all(),
             'dataPengaduanku'   =>  Pengaduan::all()
         ]);
     }
@@ -49,7 +49,6 @@ class UserPerngaduanController extends Controller
             'kategori_id' =>  'required',
             'isipengaduan'  =>  'required',
             'tanggalpengaduan'  =>  'required',
-            'gambar'     =>  'required',
             'status'    => 'New'
         ]);
         // dd(request()->all());
@@ -57,10 +56,10 @@ class UserPerngaduanController extends Controller
         Pengaduan::create($dataSimpanPengaduanku);
 
         $gambar = Pengaduan::latest()->first();
-        $files = $request->file('gambar');
+        $files = $request->file('files');
 
         foreach ($files as $multifiles) {
-            if ($request->hasfile('gambar')) {
+            if ($request->hasfile('files')) {
                 $nama = hexdec(uniqid());
                 $ekstensi = strtolower($multifiles->getClientOriginalExtension());
                 $filenamesave = $nama.'.'.$ekstensi;
@@ -71,7 +70,7 @@ class UserPerngaduanController extends Controller
                 ]);
             }
         }
-            return redirect('/pengaduanku');
+            return redirect('/pengaduanmasuk');
 
     }
 

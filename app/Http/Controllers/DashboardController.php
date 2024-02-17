@@ -16,6 +16,7 @@ class DashboardController extends Controller
         $dataKategori   = KategoriPengaduan::count();
         $dataLaporan    = Pengaduan::count();
         $LaporanBaru    = Pengaduan::where('status', 'New')->count();
+        $datamasuk      = Pengaduan::all();
 
         return view('pages.admin.dashboard.index', [
             'tittle'    => 'APM | Dashboard',
@@ -23,84 +24,16 @@ class DashboardController extends Controller
             'breadcrumb1' =>  'Dashboard',
             'breadcrumb2' =>  'Index',
             'Masyarakat'    => $dataMasyarakat,
-        'Kategori'      => $dataKategori,
-        'LaporanMasuk'  => $dataLaporan,
-        'Terbaru'       => $LaporanBaru
+            'Kategori'      => $dataKategori,
+            'LaporanMasuk'  => $dataLaporan,
+            'Terbaru'       => $LaporanBaru,
+            'datamasuk'       => $datamasuk,
         ]);
     }
+
     public function logout(Request $request){
         $request->session()->invalidate();
         $request->session()->regenerate();
         return redirect('/loginadmin');
     }
-
-    public function DataLaporan(Request $request)
-    {
-                // Data Dari Controller
-        $orderBy = 'pengaduan.id';
-        switch ($request->input('order.0.column')) {
-            case '0': //untuk inisialisasi data kolom
-                $orderBy = 'pengaduan.tanggalpengaduan';
-                break;
-                case '1':
-                    $orderBy = 'pengaduan.judul';
-                    break;
-                case '2':
-                    $orderBy = 'users.name';
-                    break;
-                case '3':
-                    $orderBy = 'kategoripengaduan.namacategory';
-                    break;
-
-
-        }
-        // Get Data Nya
-        $data = DB::table('pengaduan')
-        ->leftJoin('users','pengaduan.masyarakat_id','users.id')
-        ->leftJoin('kategoripengaduan','pengaduan.kategori_id','kategoripengaduan.id')
-        ->select('pengaduan.*','users.name','kategoripengaduan.namacategory');
-        // Function filter dari inputan search
-        if($request->input('search.value')!= null){
-            $data = $data->where(function($q)use($request){
-                $q->WhereRaw('LOWER(pengaduan.judul) like ?',['%'.$request->input('search.value').'%'])
-                ->orWhereRaw('LOWER(users.name) like ?',['%'.$request->input('search.value').'%'])
-                ->orWhereRaw('LOWER(kategoripengaduan.namacategory) like ?',['%'.$request->input('search.value').'%']);
-            });
-        }
-
-        $recordsFiltered = $data->get()->count(); //menampilkan jumlah Isi Record yang terfilter
-        if($request->input('length')!= -1)$data = $data->skip($request->input('start'))->take($request->input('length'));
-        $data = $data->orderBy($orderBy, $request->input('order.0.dir'))->get();
-        $recordsTotal = $data->count(); //menampilkan jumlah seluruh data
-        return response()->json([
-            'draw' => $request->input('draw'),
-            'recordsTotal'  => $recordsTotal,
-            'recordsFiltered'   => $recordsFiltered,
-            'data'  => $data
-        ]);
-    }
-    // public function changePassword(Request $request)
-    // {
-    //     $request->validate([
-    //         'current_password' => ['required'],
-    //         'new_password' => ['required', 'min:5'],
-    //         'konfirmasi_password' => ['required', 'min:5']
-    //     ]);
-
-    //     if (Hash::check($request->current_password, auth()->user()->password))
-    //     {
-    //         if ($request->new_password != $request->konfirmasi_password)
-    //         {
-    //             return redirect('/profile/ubahpassword')->with('informasi', 'Sesuaikan antara password baru dengan konfirmasi password.');
-    //         } else {
-    //             auth()->user()->update(['password' => bcrypt($request->new_password)]);
-    //             return redirect('/profile')->with('informasi', 'Password Anda berhasil diperbarui.');
-    //         }
-    //     } else
-    //     {
-    //         return redirect('/profile/ubahpassword')->with('informasi', 'Password tidak sesuai.');
-    //     }
-    // }
-
-
 }

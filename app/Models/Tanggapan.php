@@ -14,12 +14,12 @@ class Tanggapan extends Model
     //relasi balik ke pengaduan
     public function pengaduan()
     {
-        return $this->belongsTo('pengaduan', 'pengaduan_id', 'id');
+        return $this->belongsTo(Pengaduan::class, 'pengaduan_id', 'id');
     }
 
     //relasi balik ke user
     public function user()
     {
-        return $this->belongsTo('users', 'users_id', 'id');
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 }

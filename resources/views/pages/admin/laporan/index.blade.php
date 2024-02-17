@@ -15,17 +15,18 @@
                                         <label for="selectFilter">Filter Berdasarkan status</label>
                                         <select name="selectFilter" id="select Filter" class="form form-control">
                                             <option value="">-- Filter Status --</option>
-                                            <option value="">New</option>
-                                            <option value="">Process</option>
-                                            <option value="">Selesai</option>
+                                            @foreach ($dataMasuk as $item)
+                                            <option value="{{ $item->id }}">{{ $item->status }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-3 float-right">
                                         <label for="selectFilter">Filter Berdasarkan Kategori</label>
                                         <select name="selectFilter" id="select Filter" class="form form-control">
                                             <option value="">-- Filter Kategori --</option>
-                                            <option value="">Pencemaran</option>
-                                            <option value="">Kekerasan</option>
+                                            @foreach ($dataKategori as $item)
+                                            <option value="{{ $item->id }}">{{ $item->namacategory }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -45,7 +46,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                @foreach ($dataMasuk as $item)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->tanggalpengaduan }}</td>
+                                                    <td>{{ $item->judul }}</td>
+                                                    <td>{{ $item->user->name }}</td>
+                                                    <td>{{ $item->kategoripengaduan->namacategory }}</td>
+                                                    <td>{{ $item->status }}</td>
+                                                    <td></td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -61,77 +72,4 @@
             </section>
 
 @endsection
-@section('js')
-<script type="text/javascript">
-const table = $('#example5').DataTable({
-    "pageLength"    : 10,
-    "lengthMenu"    : [
-        [10, 25, 50, 100],
-        [10, 25, 50, 100]
-    ],
-    "bLengthChange" : true,
-    "bFilter"       : true,
-    "bInfo"         : true,
-    "processing"    : true,
-    "bServerSide"   : true,
-    ajax :{
-        url : "{{ url('') }}/dataTableLaporan",
-        type : "POST",
-    },
-    columnDefs: [{
-        targets : "_all",
-        visible : true,
-    },
-    {
-        "targets"   : 0, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.id
-        }
-    },
-    {
-        "targets"   : 1, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.tanggalpengaduan
-        }
-    },
-    {
-        "targets"   : 2, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.judul
-        }
-    },
-    {
-        "targets"   : 3, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.name
-        }
-    },
-    {
-        "targets"   : 4, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.namacategory
-        }
-    },
-    {
-        "targets"   : 5, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return row.status
-        }
-    },
-    {
-        "targets"   : 6, //Untuk urutan data di dalam kolom
-        "class"     : "text-nowrap",
-        "render"    : function(data, type, row, meta){
-            return '<a href="laporanmasuk/detail/$(row.id)"><li class="fa fa-list"></li></a>'
-        }
-    },
-]
-})
-</script>
-@endsection
+
