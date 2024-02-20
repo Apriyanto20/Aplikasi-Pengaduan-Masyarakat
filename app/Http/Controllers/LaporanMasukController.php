@@ -28,19 +28,6 @@ class LaporanMasukController extends Controller
         ]);
     }
 
-    public function detail($id)
-    {
-        return view('pages.admin.laporan.detail', [
-            'tittle'    => 'APM | Laporan Masuk',
-            'header'    =>  'Laporan Masuk',
-            'breadcrumb1' =>  'Laporan Masuk',
-            'breadcrumb2' =>  'Detail',
-            // 'detailUser'=> User::where('id', $id)->first(),
-            'detailPengaduan' => Pengaduan::all(),
-            // 'kategori'        => KategoriPengaduan::where('namacategory')
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +57,15 @@ class LaporanMasukController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.admin.laporan.detail', [
+            'tittle'    => 'APM | Laporan Masuk',
+            'header'    =>  'Laporan Masuk',
+            'breadcrumb1' =>  'Laporan Masuk',
+            'breadcrumb2' =>  'Detail',
+            'detailUser'=> User::all(),
+            'detailPengaduan' => Pengaduan::all(),
+            'kategori'        => KategoriPengaduan::all()
+        ]);
     }
 
     /**

@@ -34,8 +34,7 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
     Route::resource('/masyarakat', MasyarakatController::class);
     Route::resource('/pegawai', PegawaiController::class);
     Route::resource('/kategori', KategoriController::class);
-    Route::get('/laporanmasuk', [LaporanMasukController::class, 'index']);
-    Route::get('/laporanmasuk/detail/{id}', [LaporanMasukController::class, 'detail']);
+    Route::resource('/laporanmasuk', LaporanMasukController::class);
     Route::get('/generatereport', [GenerateReportController::class, 'index']);
     Route::get('/generatereport/periode', [GenerateReportController::class, 'periode']);
     Route::get('/generatereport/rekap', [GenerateReportController::class, 'rekap']);
@@ -48,12 +47,12 @@ Route::group(['middleware' => ['auth', 'cekLevel:Admin,Petugas']], function () {
 Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 
 //user
-// Route::middleware(['masyarakat'])->group(function() {
-Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
-Route::get('/profileuser', [UserProfileController::class, 'index']);
-// });
-Route::resource('/pengaduanmasuk', UserPerngaduanController::class);
+Route::middleware(['masyarakat'])->group(function() {
+    Route::get('/profileuser', [UserProfileController::class, 'index']);
+    Route::resource('/pengaduanmasuk', UserPerngaduanController::class);
+});
 
+Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);
 Route::get('/', [LoginUserController::class, 'index']);

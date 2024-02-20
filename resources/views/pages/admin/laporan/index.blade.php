@@ -54,7 +54,11 @@
                                                     <td>{{ $item->user->name }}</td>
                                                     <td>{{ $item->kategoripengaduan->namacategory }}</td>
                                                     <td>{{ $item->status }}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <a href="/laporanmasuk/{{ $item->id }}" class="btn btn-primary btn-xs">
+                                                            <li class="fa fa-list"></li>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

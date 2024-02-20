@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\gambar;
 use App\Models\KategoriPengaduan;
 use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserPerngaduanController extends Controller

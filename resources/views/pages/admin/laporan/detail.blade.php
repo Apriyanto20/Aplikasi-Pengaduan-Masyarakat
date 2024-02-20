@@ -33,10 +33,9 @@
                                             <label for="tanggalLaporan">Tanggal Laporan</label>
                                         </div>
                                         <div class="col-sm-6">
-                                            : {{ $detailPengaduan->tanggalpengaduan }}
+                                            {{-- : {{ $detailPengaduan->tanggalpengaduan }} --}}
                                         </div>
                                     </div>
-
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
