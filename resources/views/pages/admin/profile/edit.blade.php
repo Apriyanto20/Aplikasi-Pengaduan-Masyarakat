@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-three-profile"
                                                         role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-                                                        <form action="/profile/ubahPassword{{ auth()->user()->id }}" method="POST">
+                                                        <form action="/profile/ubahPassword/{{ auth()->user()->id }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
                                                         <div class="col-md-6 col-xs-6">
@@ -135,9 +135,9 @@
                                                                     class="form form-control" id="textNewPassword">
                                                             </div>
                                                             <div class="form form-group">
-                                                                <a href="pegawai.html" class="btn btn-success btn-md">
+                                                                <button type="submit" class="btn btn-success btn-md">
                                                                     <li class="fa fa-save"></li> Ubah Password
-                                                                </a>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                         </form>

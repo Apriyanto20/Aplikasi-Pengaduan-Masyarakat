@@ -8,13 +8,14 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -28,7 +29,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             </ul>
 
@@ -36,8 +38,33 @@
         </nav>
         <!-- /.navbar -->
 
+        {{-- Modal Logout --}}
+        <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Sidebar Container -->
         @include('includes.menuadmin')
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -60,34 +87,37 @@
 
             <!-- Main content -->
             @yield('content')
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1
         </div>
-        <strong>Copyright &copy; 2023 Template By <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
-    </footer>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1
+            </div>
+            <strong>Copyright &copy; 2023 Template By <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- Bootstrap 4 -->
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables -->
-    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    {{-- <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script> --}}
     <!-- AdminLTE App -->
-    <script src="/dist/js/adminlte.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="/dist/js/demo.js"></script>
+    <script src="dist/js/demo.js"></script>
     <!-- page script -->
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,

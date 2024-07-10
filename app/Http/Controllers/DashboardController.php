@@ -36,4 +36,9 @@ class DashboardController extends Controller
         $request->session()->regenerate();
         return redirect('/loginadmin');
     }
+    public function logoutUser(Request $request){
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        return redirect('/');
+    }
 }

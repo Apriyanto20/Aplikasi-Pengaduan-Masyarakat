@@ -49,10 +49,12 @@ Route::get('/loginadmin', [LoginAdminController::class, 'index']);
 //user
 Route::middleware(['masyarakat'])->group(function() {
     Route::get('/profileuser', [UserProfileController::class, 'index']);
+    Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
     Route::resource('/pengaduanmasuk', UserPerngaduanController::class);
+    Route::post('/',[DashboardController::class,'logoutUser']);
 });
 
-Route::post('/pengaduanku', [LoginUserController::class, 'auth']);
+
 Route::get('/', [RegisterController::class, 'index']);
 Route::post('/', [RegisterController::class, 'auth']);
 Route::get('/', [LoginUserController::class, 'index']);

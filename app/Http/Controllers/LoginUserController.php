@@ -18,15 +18,15 @@ class LoginUserController extends Controller
             'email' =>  'required',
             'password'  =>  'required'
         ]);
-        // dd('oke');
-        if(Auth::attempt($dataValidasi)){
-            $request->session()->regenerate();
-            $role = auth()->user()->role;
-            if ($role == 'Masyarakat'){
-                return redirect()->intended('/pengaduanmasuk');
-            }
-        }else{
-            return back();
-        }
+        ddd('oke');
+        // if(Auth::attempt($dataValidasi)){
+        //     $request->session()->regenerate();
+        //     $role = auth()->user()->role;
+        //     if ($role == 'Masyarakat'){
+        //         return redirect()->intended('/pengaduanmasuk');
+        //     }
+        // }else{
+        //     return back();
+        // }
     }
 }
